@@ -19,3 +19,5 @@ $CommonProps = @{
 }
 
 $PublicIPAddress = New-AzPublicIpAddress @CommonProps -Name $PublicIPName -Sku "Standard" -AllocationMethod "Static"
+
+"Public IP ID: " + $PublicIPAddress.Id

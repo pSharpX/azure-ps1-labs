@@ -38,7 +38,7 @@ $NetworkInterfacePrimaryIpConfig = $NetworkInterfaceIpConfigs | Where-Object Pri
 "Primary Ip Config: " + $NetworkInterfacePrimaryIpConfig.Id
 "Available Ip Configs: " + ($NetworkInterfaceIpConfigs | Select-Object -ExpandProperty Name)
 
-"Assigning Public IP Address ($PublicIPAddress.Name) to Network Interface Ip Config ($NetworkInterfacePrimaryIpConfig.Name)"
+"Assigning Public IP Address (" + $PublicIPAddress.Name + ") to Network Interface Ip Config (" + $NetworkInterfacePrimaryIpConfig.Name + ")"
 $NetworkInterface | Set-AzNetworkInterfaceIpConfig -Name $NetworkInterfacePrimaryIpConfig.Name -PublicIpAddress $PublicIPAddress
-"Updating Network Interface ($NetworkInterface.Name)"
+"Updating Network Interface (" + $NetworkInterface.Name + ")"
 $NetworkInterface | Set-AzNetworkInterface

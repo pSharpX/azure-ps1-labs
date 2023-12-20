@@ -18,7 +18,7 @@ $CommonProps = @{
     Tag = $Tags
 }
 
-$PublicIPAddress = Get-AzPublicIpAddress -Name $PublicIPName -ResourceGroupName $ResourceGroupName
+$PublicIPAddress = Get-AzPublicIpAddress -Name $PublicIPName -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue
 if ($null -eq $PublicIPAddress) {
     "Public IP Address not found: " + $PublicIPName
     $PublicIPAddress = New-AzPublicIpAddress @CommonProps -Name $PublicIPName -Sku "Standard" -AllocationMethod "Static"

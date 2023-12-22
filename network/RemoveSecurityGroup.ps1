@@ -9,5 +9,6 @@ $SecurityGroup = Get-AzNetworkSecurityGroup -Name $SecurityGroupName -ResourceGr
 if ($null -ne $SecurityGroup) {
     "Removing Network Security Group.."
     Remove-AzNetworkSecurityGroup -Name $SecurityGroupName -ResourceGroupName $ResourceGroup.ResourceGroupName -Force
-    "Network Security Group removed: $SecurityGroupName.Name"
+    "Network Security Group removed: " + $SecurityGroupName
 }
+

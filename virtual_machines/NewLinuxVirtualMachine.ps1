@@ -24,12 +24,13 @@ $NetworkInterface = Get-AzNetworkInterface -Name $NetworkInterfaceName -Resource
 
 $ComputerName = "PC01" + $ApplicationId
 $Username = "crivera"
-$SecurePassword = '$L0y4lt1' | ConvertTo-SecureString -AsPlainText -Force
+$SecurePassword = '' | ConvertTo-SecureString -AsPlainText -Force
 $Credentials = New-Object System.Management.Automation.PSCredential ($Username, $SecurePassword)
 
 $VMConfig = New-AzVMConfig -VMName $VirtualMachineName -VMSize $VMSize -SecurityType Standard -Tags $Tags
-$VMConfig = Set-AzVMSourceImage -VM $VMConfig -PublisherName $PublisherName -Offer $Offer -Skus $Sku -Version "latest"
-$VMConfig = Set-AzVMOperatingSystem -VM $VMConfig -Linux -ComputerName $ComputerName -Credential $Credentials -DisablePasswordAuthentication
+Set-AzVMSourceImage -VM $VMConfig -PublisherName $PublisherName -Offer $Offer -Skus $Sku -Version "latest"
+Set-AzVMOperatingSystem -VM $VMConfig -Linux -ComputerName $ComputerName -Credential $Credentials -DisablePasswordAuthentication
+Set-AzVMBootDiagnostic -VM $VMConfig -Disable
 $VMConfig = Add-AzVMNetworkInterface -VM $VMConfig -NetworkInterface $NetworkInterface
 #$VMConfig = Set-AzVMOSDisk -VM $VMConfig
 

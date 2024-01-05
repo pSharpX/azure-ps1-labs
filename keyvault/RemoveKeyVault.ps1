@@ -15,3 +15,4 @@ if ($null -eq $KeyVault) {
 Write-Host "Removing key Vault: $($KeyVault.VaultName)"
 Remove-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroup.ResourceGroupName -Force
 Write-Host "Key Vault removed"
+#Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus

@@ -23,6 +23,9 @@ $ServicePrincipalAppId = $ServicePrincipal.AppId
 $ServicePrincipalSecret = $ServicePrincipal.PasswordCredentials.SecretText
 
 Write-Host "Service Principal ID: $($ServicePrincipalId)"
+Write-Host "Service Principal Name: $($ServicePrincipal.ServicePrincipalName)"
+Write-Host "Service Principal DisplayName: $($ServicePrincipal.DisplayName)"
+Write-Host "Service Principal Type: $($ServicePrincipal.ServicePrincipalType)"
 Write-Host "Service Principal Application ID: $($ServicePrincipalAppId)"
 Write-Host "Service Principal Secret: $($ServicePrincipalSecret)"
 

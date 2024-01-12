@@ -68,7 +68,7 @@ $StorageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupN
 $DefaultStorageAccountKey = $StorageAccountKeys | Where-Object {$_.KeyName -eq "key1"}
 
 Write-Host "Blob URL: $BlobUri"
-Write-Host "Storage Account Default Key: $DefaultStorageAccountKey"
+Write-Host "Storage Account Default Key: $($DefaultStorageAccountKey.KeyName)"
 
 
 

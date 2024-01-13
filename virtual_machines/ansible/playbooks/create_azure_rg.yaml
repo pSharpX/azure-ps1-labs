@@ -1,0 +1,9 @@
+---
+- name: Provision resources in Azure
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Azure Resource Group
+      azure_rm_resourcegroup:
+        name: "TeamGOAT_rg"
+        location: "eastus"

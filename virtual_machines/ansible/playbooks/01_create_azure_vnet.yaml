@@ -1,0 +1,24 @@
+---
+- name: Provision resources in Azure
+  hosts: localhost
+  connection: local
+  vars_files:
+    - vars.yaml
+  tasks:
+    - name: Create Azure Virtual Network
+      azure_rm_virtualnetwork:
+        resource_group: "{{ resource_group_name }}"
+        location: "{{ location }}"
+        name: "{{ virtual_network_name }}"
+        address_prefixes: "10.0.0.0/16"
+        state: present
+        tags: "{{ tags }}"
+
+    - name: Create/Add subnets
+      azure_rm_subnet:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ item.name }}"
+        address_prefix_cidr: "{{ item.address_prefix }}"
+        virtual_network_name: "{{ virtual_network_name }}"
+        state: present
+      with_items: "{{ subnets }}"

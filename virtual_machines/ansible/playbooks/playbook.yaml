@@ -1,0 +1,7 @@
+---
+- import_playbook: 00_create_azure_rg.yaml
+- import_playbook: 01_create_azure_vnet.yaml
+- import_playbook: 02_create_azure_nsg.yaml
+- import_playbook: 03_create_azure_pip.yaml
+- import_playbook: 04_create_azure_nic.yaml
+- import_playbook: 05_create_azure_vm.yaml

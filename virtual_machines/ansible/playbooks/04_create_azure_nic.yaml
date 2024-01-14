@@ -1,0 +1,25 @@
+---
+- name: Provision resources in Azure
+  hosts: localhost
+  connection: local
+  vars_files:
+    - vars.yaml
+  tasks:
+    - name: Create virtual network interface card
+      azure_rm_networkinterface:
+        resource_group: "{{ resource_group_name }}"
+        location: "{{ location }}"
+        name: "{{ network_interface_name }}"
+        virtual_network: "{{ virtual_network_name }}"
+        subnet_name : "{{ subnets[0].name }}"
+        security_group: "{{ security_group_name }}"
+        ip_configurations:
+          - name: ipconfig1
+            primary: true
+            public_ip_address_name: "{{ public_ip_name }}"
+          - name: ipconfig2
+            primary: false
+          - name: ipconfig3
+            primary: false
+        state: present
+        tags: "{{ tags }}"

@@ -1,0 +1,26 @@
+application_id: onebank
+tags:
+  provisioner: ansible
+  environment: development
+  technical_owner: teamGOAT
+  application_id: "{{ application_id }}"
+  data_classification: classified
+
+username: crivera
+ssh_key_data: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6GZGO2XYlMabkGAtEEbLRSf2YoahAOKuxIrhYe4sXA9b+g5JKAD+Fqf1IpBh8PwWyvuZuyp3mit3sGMLBtvs3J/mivjdqJGbIKXg+9hqqVCp5Yu5LYWaWN3Sg2dpYVK01uFR4e33KFKMgV8Wli3tYYdr/2/YXR2IvTGcLcQUAMi9dxfKoQwpVNRJAGO8Ks1wCmGCLfUq8Di+QMjgziBt00oMsXo8vjs+4n8xjXlh2KcOABvIt9H/BRh5lC2B8hTnwtPtM27a5Wvp8/B/WaTXFfoaEEE+OP3rGVTLrmB8AwhwBQM0p9f60eN7BKILmSypQAb7EZtF0bApKvVmUzGpUZvIQdeVc1LJClU7wvb9+UTnoHkpTOeeT7EdnKqz81h+GRoVhTtxQCfjbmve7nNZFEOrne056kzZPgwb/Bb9od0CXlOl42FNq8r0xTUKOGdPxxoL/f3ul8Efqj4PEhbo0a4BKU2rTdSuR3s6PvmwcNdBkT3ocJX5jrINtBOLw7+c= ce.rivera@PE-IT001372
+
+resource_group_name: TeamGOAT_rg
+location: eastus
+virtual_machine_name: "{{ application_id }}vm"
+virtual_network_name: "{{ application_id }}vnet"
+security_group_name: "{{ application_id }}nsg"
+public_ip_name: "{{ application_id }}pip"
+network_interface_name: "{{ application_id }}nic"
+
+subnets:
+  - name: subnetA
+    address_prefix: 10.0.1.0/24
+  - name: subnetB
+    address_prefix: 10.0.2.0/24
+  - name: subnetC
+    address_prefix: 10.0.3.0/24

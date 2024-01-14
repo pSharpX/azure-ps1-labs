@@ -1,0 +1,39 @@
+---
+- name: Provision resources in Azure
+  hosts: localhost
+  connection: local
+  vars_files:
+    - vars.yaml
+  tasks:
+    - name: Create Network Security Group that allows SSH
+      azure_rm_securitygroup:
+        resource_group: "{{ resource_group_name }}"
+        location: "{{ location }}"
+        name: "{{ security_group_name }}"
+        rules:
+          - name: http-rule
+            description: Allow HTTP All
+            protocol: Tcp
+            access: Allow
+            direction: Inbound
+            priority: 100
+            destination_address_prefix: "*"
+            destination_port_range: 8080
+          - name: https-rule
+            description: Allow HTTPS All
+            protocol: Tcp
+            access: Allow
+            direction: Inbound
+            priority: 101
+            destination_address_prefix: "*"
+            destination_port_range: 443
+          - name: ssh-rule
+            description: Allow SSH All
+            protocol: Tcp
+            access: Allow
+            direction: Inbound
+            priority: 102
+            destination_address_prefix: "*"
+            destination_port_range: 22
+        state: present
+        tags: "{{ tags }}"

@@ -2,8 +2,12 @@
 - name: Provision resources in Azure
   hosts: localhost
   connection: local
+  vars_files:
+    - vars.yaml
   tasks:
     - name: Create Azure Resource Group
       azure_rm_resourcegroup:
-        name: "TeamGOAT_rg"
-        location: "eastus"
+        name: "{{ resource_group_name }}"
+        location: "{{ location }}"
+        state: present
+        tags: "{{ tags }}"

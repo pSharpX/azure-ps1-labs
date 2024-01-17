@@ -40,4 +40,4 @@ if ($null -eq $SqlDatabase) {
     $SqlDatabase = New-AzSqlDatabase @CommonProps
 }
 
-Write-Host "SQL Server: $($SqlDatabase.DatabaseName)"
+Write-Host "SQL Database: $($SqlDatabase.DatabaseName)"

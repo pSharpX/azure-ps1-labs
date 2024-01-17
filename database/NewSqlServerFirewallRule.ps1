@@ -9,6 +9,8 @@ $SqlServerName = $ApplicationId + "sqlserver"
 Write-Host "1. Get Sql Server"
 $SqlServer = Get-AzSqlServer -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -ErrorAction Stop
 
+$MyIpAddress = Invoke-WebRequest -Uri https://ifconfig.me/ip
+
 $CommonPropsList = @(
     @{
         ResourceGroupName = $ResourceGroup.ResourceGroupName
@@ -21,8 +23,8 @@ $CommonPropsList = @(
         ResourceGroupName = $ResourceGroup.ResourceGroupName
         ServerName = $SqlServer.ServerName
         FirewallRuleName = "Allow-MyIp"
-        StartIpAddress = "your_ip_address"
-        EndIpAddress = "your_ip_address"
+        StartIpAddress = $MyIpAddress.Content
+        EndIpAddress = $MyIpAddress.Content
     }
 )
 

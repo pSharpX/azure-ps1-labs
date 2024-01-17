@@ -34,3 +34,4 @@ if ($null -eq $SqlServer) {
 }
 
 Write-Host "SQL Server: $($SqlServer.ServerName)"
+Write-Host "SQL Server FQDN: $($SqlServer.FullyQualifiedDomainName)"

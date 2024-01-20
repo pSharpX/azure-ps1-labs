@@ -15,9 +15,9 @@ if ($null -ne $ManagedIdentity) {
     $Resources = Get-AzUserAssignedIdentityAssociatedResource -ResourceGroupName $ResourceGroupName -Name $ManagedIdentity.Name -ErrorAction SilentlyContinue
     if ($null -ne $Resources) {
         foreach ($Resource in $Resources) {
-            Write-Host "User-Assigned Identity ID: $($ManagedIdentity.Id)"
-            Write-Host "User-Assigned Identity Principal ID: $($ManagedIdentity.PrincipalId)"
-            Write-Host "User-Assigned Identity Type: $($ManagedIdentity.Type)"
+            Write-Host "Resource ID: $($Resource.Id)"
+            Write-Host "Resource Name: $($Resource.Name)"
+            Write-Host "Resource Type: $($Resource.Type)"
         }
     }
 }

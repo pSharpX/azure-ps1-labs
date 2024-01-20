@@ -20,7 +20,7 @@ $CommonProps = @{
     Name = $AppServicePlanName
     Tier = "Standard" # Free, Basic, Standard, Premium
     NumberofWorkers = 2
-    WorkerSize = "Small" # Small, Medium, Large
+    WorkerSize = "Medium" # Small, Medium, Large
     Linux = $true
     Tag = $Tags
 }

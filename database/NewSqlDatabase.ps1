@@ -34,7 +34,7 @@ $CommonProps = @{
 }
 
 Write-Host "1. Get or Create new SQL Database"
-$SqlDatabase = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlDatabaseName -ErrorAction SilentlyContinue
+$SqlDatabase = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -DatabaseName $SqlDatabaseName -ErrorAction SilentlyContinue
 if ($null -eq $SqlDatabase) {
     Write-Host "Creating new SQL Database.."
     $SqlDatabase = New-AzSqlDatabase @CommonProps
